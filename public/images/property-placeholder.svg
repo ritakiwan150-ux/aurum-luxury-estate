@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="750" viewBox="0 0 1200 750">
+  <rect width="1200" height="750" fill="#0b111e"/>
+  <path d="M0 560 280 300l190 170 230-260 500 420v120H0z" fill="#172235"/>
+  <path d="M0 620 315 390l170 140 225-210 490 340v90H0z" fill="#202c3c"/>
+  <text x="600" y="680" fill="#d4af37" font-family="serif" font-size="34" text-anchor="middle" letter-spacing="12">AURUM</text>
+</svg>

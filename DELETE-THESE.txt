@@ -1,0 +1,2 @@
+Delete this file from the website project (it made missing pages return HTTP 200 instead of 404):
+  app/[lang]/properties/[slug]/loading.tsx

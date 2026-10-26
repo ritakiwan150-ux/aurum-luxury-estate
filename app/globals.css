@@ -1,26 +1,116 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-brand-obsidian: #0B111E;
+  --color-brand-gold: #D4AF37;
+  --color-brand-gold-low: rgba(212, 175, 55, 0.15);
+  --color-brand-gold-med: rgba(212, 175, 55, 0.4);
+  --color-brand-amber: #F59E0B;
+  --color-brand-ivory: #e2e2e9;
+  --color-brand-sand: #d0c5af;
+  /* Secondary text: >= 4.5:1 (WCAG AA) on .page-surface even over the brightest frame of the background. */
+  --color-brand-muted: #B8AE98;
+  
+  /* Latin glyphs come first, Arabic glyphs fall through to Amiri / Cairo. */
+  --font-serif: "Playfair Display Variable", "Amiri", serif;
+  --font-sans: "DM Sans Variable", "Cairo Variable", sans-serif;
+  --font-display: "EB Garamond Variable", "Amiri", serif;
+  --font-manrope: "Manrope Variable", "Cairo Variable", sans-serif;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: #0B111E;
+  color: #e2e2e9;
+  font-family: var(--font-sans);
+}
+
+/* Visible keyboard focus everywhere (accessibility). */
+:focus-visible {
+  outline: 2px solid var(--color-brand-gold);
+  outline-offset: 2px;
+}
+
+/* Arabic: letter-spacing breaks the joined letters, and the script needs more line height. */
+html[lang="ar"] * {
+  letter-spacing: normal !important;
+}
+html[lang="ar"] body {
+  line-height: 1.8;
+}
+html[lang="ar"] h1,
+html[lang="ar"] h2,
+html[lang="ar"] h3 {
+  line-height: 1.35 !important;
+}
+
+/* Respect the "reduce motion" OS setting. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* One page width for the navbar, every page and the footer, so their edges line up. */
+.container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 768px) {
+  .container-page {
+    padding-inline: 4rem;
+  }
+}
+
+/* Dark veil over the scroll animation behind readable content (contrast verified in stage 3). */
+.page-surface {
+  background-color: rgb(11 17 30 / 0.82);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+.glass-row {
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.3s ease;
+}
+
+.glass-row:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(242, 202, 80, 0.3);
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(11, 17, 30, 0.5);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(212, 175, 55, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(212, 175, 55, 0.6);
 }
